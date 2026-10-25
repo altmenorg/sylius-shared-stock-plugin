@@ -1,0 +1,6 @@
+altmenorg_sylius_shared_stock:
+    flash:
+        changed_meanwhile: "Le stock commun a changé pendant que la page était ouverte (%from% affiché, %before% à l'enregistrement) : votre correction de %delta% a été appliquée, %now% %unit% en main désormais."
+        refused_enable: "Le stock commun n'a pas été activé : il l'était déjà. Rechargez la page."
+        refused_disable: "Le stock commun n'a pas été désactivé : des commandes en réservent %on_hold% %unit%."
+        refused_correct: "Le stock commun n'a pas été modifié : une correction de %delta% le ferait passer sous zéro (%on_hand% %unit% en main)."

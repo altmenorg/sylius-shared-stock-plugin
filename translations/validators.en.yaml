@@ -1,0 +1,4 @@
+altmenorg_sylius_shared_stock:
+    on_hand_required: Enter the stock on hand.
+    on_hand_negative: The stock on hand cannot be negative.
+    on_hold_cannot_disable: "Orders hold %on_hold% of this stock: it cannot be switched off until they are paid or cancelled."

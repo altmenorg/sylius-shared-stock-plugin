@@ -1,0 +1,6 @@
+altmenorg_sylius_shared_stock:
+    flash:
+        changed_meanwhile: "The shared stock changed while the page was open (%from% shown, %before% at save time): your correction of %delta% was applied, %now% %unit% on hand now."
+        refused_enable: "The shared stock was not switched on: it already was. Reload the page."
+        refused_disable: "The shared stock was not switched off: orders hold %on_hold% %unit% of it."
+        refused_correct: "The shared stock was not changed: a correction of %delta% would take it below zero (%on_hand% %unit% on hand)."

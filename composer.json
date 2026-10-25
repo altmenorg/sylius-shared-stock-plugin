@@ -1,0 +1,47 @@
+{
+    "name": "altmenorg/sylius-shared-stock-plugin",
+    "type": "sylius-plugin",
+    "description": "Sylius 2 plugin: one stock shared by all the variants of a product, counted in a base unit (sell 100 g, 250 g and 1 kg bags from the same stock of grams).",
+    "keywords": ["sylius", "sylius-plugin", "inventory", "stock", "variants", "bulk", "weight"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Altmenorg",
+            "homepage": "https://github.com/altmenorg"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "doctrine/dbal": "^3.8 || ^4.0",
+        "doctrine/orm": "^2.18 || ^3.0",
+        "sylius/sylius": "^2.0",
+        "symfony/framework-bundle": "^6.4 || ^7.0",
+        "symfony/yaml": "^6.4 || ^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5 || ^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Altmenorg\\SyliusSharedStockPlugin\\": "src/",
+            "Altmenorg\\SyliusSharedStockPlugin\\Migrations\\": "migrations/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Altmenorg\\SyliusSharedStockPlugin\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": false,
+            "symfony/flex": false
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.1-dev"
+        }
+    }
+}

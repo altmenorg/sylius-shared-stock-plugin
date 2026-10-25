@@ -1,0 +1,74 @@
+{% set form = hookable_metadata.context.form %}
+{% set product = hookable_metadata.context.resource %}
+
+{% if form.sharedStockEnabled is defined %}
+    {% set shared = sylius_shared_stock_product(product) %}
+    {% set unit = product.sharedStockUnit %}
+    <div class="tab-pane" id="product-shared-stock" role="tabpanel" tabindex="0" {{ sylius_test_html_attribute('shared-stock') }}>
+        <div class="card mb-3">
+            <div class="card-header">
+                <h2 class="card-title">{{ 'altmenorg_sylius_shared_stock.ui.shared_stock'|trans }}</h2>
+            </div>
+            <div class="card-body">
+                <p class="text-secondary">{{ 'altmenorg_sylius_shared_stock.ui.explanation'|trans }}</p>
+
+                <div class="mb-3">
+                    {{ form_row(form.sharedStockEnabled, { label_attr: { class: 'checkbox-switch' } }) }}
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-3">{{ form_row(form.sharedStockOnHand) }}</div>
+                    <div class="col-md-4 mb-3">{{ form_row(form.sharedStockUnit) }}</div>
+                </div>
+                {{ form_widget(form.sharedStockOriginal) }}
+
+                {% if shared is not null %}
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <div class="text-secondary small">{{ 'altmenorg_sylius_shared_stock.ui.on_hold'|trans }}</div>
+                            <div class="fs-3" {{ sylius_test_html_attribute('shared-stock-on-hold') }}>{{ shared.sharedStockOnHold }} {{ unit }}</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-secondary small">{{ 'altmenorg_sylius_shared_stock.ui.available'|trans }}</div>
+                            <div class="fs-3" {{ sylius_test_html_attribute('shared-stock-available') }}>{{ sylius_shared_stock_free(shared) }} {{ unit }}</div>
+                        </div>
+                    </div>
+
+                    {% if product.variants|length > 0 %}
+                        <h3 class="card-title mt-4">{{ 'altmenorg_sylius_shared_stock.ui.variants'|trans }}</h3>
+                        <div class="table-responsive">
+                            <table class="table table-vcenter card-table">
+                                <thead>
+                                    <tr>
+                                        <th>{{ 'sylius.ui.name'|trans }}</th>
+                                        <th>{{ 'sylius.ui.code'|trans }}</th>
+                                        <th class="text-end">{{ 'altmenorg_sylius_shared_stock.ui.consumption'|trans }}</th>
+                                        <th class="text-end">{{ 'altmenorg_sylius_shared_stock.ui.available'|trans }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for variant in product.variants %}
+                                        {% set units = sylius_shared_stock_variant_units(variant) %}
+                                        <tr>
+                                            <td>{{ variant.name|default(variant.code) }}</td>
+                                            <td class="text-secondary">{{ variant.code }}</td>
+                                            <td class="text-end">{{ variant.stockConsumption is null ? '—' : variant.stockConsumption ~ ' ' ~ unit }}</td>
+                                            <td class="text-end">
+                                                {% if units is null %}
+                                                    <span class="text-secondary">{{ 'altmenorg_sylius_shared_stock.ui.own_stock'|trans }}</span>
+                                                {% elseif units > 0 %}
+                                                    {{ units }}
+                                                {% else %}
+                                                    <span class="badge bg-danger-lt">{{ 'altmenorg_sylius_shared_stock.ui.out_of_stock'|trans }}</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}

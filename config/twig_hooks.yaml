@@ -1,0 +1,29 @@
+# Admin blocks of the plugin, prepended to the Sylius admin hooks by the bundle extension.
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.product.create.content.form.side_navigation':
+            shared_stock:
+                template: '@AltmenorgSyliusSharedStockPlugin/admin/product/form/side_navigation/shared_stock.html.twig'
+                priority: 450
+        'sylius_admin.product.update.content.form.side_navigation':
+            shared_stock:
+                template: '@AltmenorgSyliusSharedStockPlugin/admin/product/form/side_navigation/shared_stock.html.twig'
+                priority: 450
+
+        'sylius_admin.product.create.content.form.sections':
+            shared_stock:
+                template: '@AltmenorgSyliusSharedStockPlugin/admin/product/form/sections/shared_stock.html.twig'
+                priority: 450
+        'sylius_admin.product.update.content.form.sections':
+            shared_stock:
+                template: '@AltmenorgSyliusSharedStockPlugin/admin/product/form/sections/shared_stock.html.twig'
+                priority: 450
+
+        'sylius_admin.product_variant.create.content.form.sections.inventory.body':
+            stock_consumption:
+                template: '@AltmenorgSyliusSharedStockPlugin/admin/product_variant/form/sections/inventory/stock_consumption.html.twig'
+                priority: 300
+        'sylius_admin.product_variant.update.content.form.sections.inventory.body':
+            stock_consumption:
+                template: '@AltmenorgSyliusSharedStockPlugin/admin/product_variant/form/sections/inventory/stock_consumption.html.twig'
+                priority: 300

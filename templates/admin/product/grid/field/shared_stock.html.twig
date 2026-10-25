@@ -1,0 +1,12 @@
+{% set shared = sylius_shared_stock_product(data) %}
+<div class="text-center text-nowrap">
+    {% if shared is null %}
+        <span class="text-secondary">—</span>
+    {% else %}
+        {% set unit = shared.sharedStockUnit %}
+        <span {{ sylius_test_html_attribute('shared-stock-on-hand') }}>{{ shared.sharedStockOnHand }} {{ unit }}</span>
+        {% if shared.sharedStockOnHold > 0 %}
+            <div class="text-secondary small">{{ 'altmenorg_sylius_shared_stock.ui.on_hold_count'|trans({ '%count%': shared.sharedStockOnHold ~ ' ' ~ unit }) }}</div>
+        {% endif %}
+    {% endif %}
+</div>

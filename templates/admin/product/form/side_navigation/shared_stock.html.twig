@@ -1,0 +1,14 @@
+{% set form = hookable_metadata.context.form %}
+
+{% if form.sharedStockEnabled is defined %}
+    <button
+        type="button"
+        class="list-group-item list-group-item-action"
+        data-bs-toggle="tab"
+        data-bs-target="#product-shared-stock"
+        role="tab"
+        {{ sylius_test_html_attribute('side-navigation-tab', 'shared-stock') }}
+    >
+        {{ 'altmenorg_sylius_shared_stock.ui.shared_stock'|trans }}
+    </button>
+{% endif %}

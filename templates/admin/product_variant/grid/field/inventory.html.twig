@@ -1,0 +1,16 @@
+{% set units = sylius_shared_stock_variant_units(data) %}
+{% if units is null %}
+    {% include options.vars.shared_stock_fallback|default('@SyliusAdmin/product_variant/grid/field/inventory.html.twig') %}
+{% else %}
+    {% set unit = data.product.sharedStockUnit %}
+    <div class="text-center" {{ sylius_test_html_attribute('shared-stock') }}>
+        {% if units > 0 %}
+            {{ 'altmenorg_sylius_shared_stock.ui.units_available'|trans({ '%count%': units }) }}
+        {% else %}
+            <span class="badge bg-danger-lt">{{ 'altmenorg_sylius_shared_stock.ui.out_of_stock'|trans }}</span>
+        {% endif %}
+        <div class="text-secondary small">
+            {{ 'altmenorg_sylius_shared_stock.ui.consumes'|trans({ '%consumption%': data.stockConsumption ~ ' ' ~ unit, '%free%': sylius_shared_stock_free(data) ~ ' ' ~ unit }) }}
+        </div>
+    </div>
+{% endif %}

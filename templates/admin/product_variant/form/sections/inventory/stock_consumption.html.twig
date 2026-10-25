@@ -1,0 +1,21 @@
+{% set form = hookable_metadata.context.form %}
+{% set variant = hookable_metadata.context.resource|default(null) %}
+
+{% if form.stockConsumption is defined %}
+    {% set shared = sylius_shared_stock_product(variant) %}
+    <div class="mb-3">
+        {{ form_row(form.stockConsumption) }}
+        {% if shared is not null %}
+            <div class="alert alert-info mt-2 mb-0">
+                {% if variant.stockConsumption %}
+                    {{ 'altmenorg_sylius_shared_stock.ui.variant_shared'|trans({
+                        '%free%': sylius_shared_stock_free(shared) ~ ' ' ~ shared.sharedStockUnit,
+                        '%units%': sylius_shared_stock_variant_units(variant),
+                    }) }}
+                {% else %}
+                    {{ 'altmenorg_sylius_shared_stock.ui.variant_not_drawing'|trans }}
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

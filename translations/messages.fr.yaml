@@ -1,0 +1,26 @@
+altmenorg_sylius_shared_stock:
+    ui:
+        shared_stock: Stock commun
+        explanation: "Les déclinaisons de ce produit puisent dans un seul stock, compté dans une unité de base (grammes, pièces…). Chaque déclinaison en consomme une quantité fixe par unité vendue : 100 pour un sachet de 100 g, 250 pour un sachet de 250 g."
+        on_hold: Réservé par des commandes
+        on_hold_count: "%count% réservés"
+        available: Disponible
+        variants: Déclinaisons
+        consumption: Consommation
+        own_stock: Stock propre
+        out_of_stock: Épuisé
+        units_available: "%count% disponibles"
+        consumes: "%consumption% l'unité · %free% libres"
+        variant_shared: "Cette déclinaison est vendue sur le stock commun du produit : %free% libres, de quoi en vendre %units%. Les champs « En stock » et « Suivi » de Sylius ne s'appliquent pas à elle."
+        variant_not_drawing: "Ce produit a un stock commun, mais cette déclinaison n'a pas de consommation : elle garde son propre stock Sylius."
+    form:
+        product:
+            enabled: Stock commun aux déclinaisons
+            enabled_help: Impossible de le désactiver tant que des commandes en réservent une partie.
+            unit: Unité de base
+            unit_help: "Affichée à côté des quantités : g, pièce, m…"
+            on_hand: Stock en main
+            on_hand_help: "Enregistré comme une correction (+50, −120) du stock tel qu'il est à l'enregistrement : une vente faite pendant que la page était ouverte est conservée."
+        variant:
+            consumption: Consommation du stock commun
+            consumption_help: "Unités de base du stock commun prises par une unité vendue (100 pour un sachet de 100 g). Vide pour une déclinaison qui a son propre stock."

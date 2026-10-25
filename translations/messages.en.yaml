@@ -1,0 +1,26 @@
+altmenorg_sylius_shared_stock:
+    ui:
+        shared_stock: Shared stock
+        explanation: "The variants of this product draw on one stock, counted in a base unit (grams, pieces…). Each variant consumes a fixed amount of it per unit sold: 100 for a 100 g bag, 250 for a 250 g bag."
+        on_hold: Reserved by orders
+        on_hold_count: "%count% reserved"
+        available: Available
+        variants: Variants
+        consumption: Consumption
+        own_stock: Own stock
+        out_of_stock: Out of stock
+        units_available: "%count% available"
+        consumes: "%consumption% each · %free% free"
+        variant_shared: "This variant is sold from the product's shared stock: %free% free, enough for %units% units. The on hand and tracking fields of Sylius are not used for it."
+        variant_not_drawing: "This product uses a shared stock, but this variant has no consumption: it keeps its own Sylius stock."
+    form:
+        product:
+            enabled: Use a shared stock for the variants
+            enabled_help: Switching it off is refused while orders hold part of the stock.
+            unit: Base unit
+            unit_help: "Shown next to the figures: g, piece, m…"
+            on_hand: Stock on hand
+            on_hand_help: "Saved as a correction (+50, −120) of the stock as it is when you save: a sale made while this page was open is kept."
+        variant:
+            consumption: Shared stock consumption
+            consumption_help: "Base units of the product's shared stock taken by one unit sold (100 for a 100 g bag). Leave empty for a variant with its own stock."

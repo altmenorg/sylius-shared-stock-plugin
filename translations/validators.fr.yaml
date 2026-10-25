@@ -1,0 +1,4 @@
+altmenorg_sylius_shared_stock:
+    on_hand_required: Indiquez le stock en main.
+    on_hand_negative: Le stock en main ne peut pas être négatif.
+    on_hold_cannot_disable: "Des commandes réservent %on_hold% de ce stock : impossible de le désactiver avant leur paiement ou leur annulation."
